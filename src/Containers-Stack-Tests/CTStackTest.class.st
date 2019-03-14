@@ -55,6 +55,20 @@ CTStackTest >> testCopyEmpty [
 ]
 
 { #category : #tests }
+CTStackTest >> testEmptyError [
+
+	| aStack |
+	aStack := self stackClass new.
+	self should: [ aStack top ] raise: Error.
+	self should: [ aStack pop ] raise: Error.
+	aStack push: 'element'.
+	aStack top.
+	aStack pop.	"The stack is empty again due to previous pop"
+	self should: [ aStack top ] raise: Error.
+	self should: [ aStack pop ] raise: Error
+]
+
+{ #category : #tests }
 CTStackTest >> testIsEmpty [
 
 	| aStack |
