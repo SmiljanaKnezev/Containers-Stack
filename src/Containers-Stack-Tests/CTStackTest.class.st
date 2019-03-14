@@ -1,8 +1,6 @@
 Class {
 	#name : #CTStackTest,
 	#superclass : #TestCase,
-	#traits : 'TEmptyTest - {#testIfNotEmptyifEmpty. #testIfEmpty. #testNotEmpty} + (TCloneTest - {#testCopyNonEmpty})',
-	#classTraits : 'TEmptyTest classTrait + TCloneTest classTrait',
 	#instVars : [
 		'empty',
 		'nonEmpty'
@@ -41,11 +39,29 @@ CTStackTest >> stackClass [
 ]
 
 { #category : #tests }
+CTStackTest >> testCopyCreatesANewObject [
+
+	| copy |
+	copy := self nonEmpty copy.
+	self deny: self nonEmpty == copy
+]
+
+{ #category : #tests }
+CTStackTest >> testCopyEmpty [
+
+	| copy |
+	copy := self empty copy.
+	self assert: copy isEmpty
+]
+
+{ #category : #tests }
 CTStackTest >> testIsEmpty [
 
 	| aStack |
 	aStack := self stackClass new.
 	self assert: aStack isEmpty.
+	aStack push: 1.
+	self deny: aStack isEmpty
 
 ]
 
@@ -74,7 +90,7 @@ CTStackTest >> testPop [
 CTStackTest >> testPush [
 	
 	| aStack |
-	aStack := self stack class new.
+	aStack := self stackClass new.
 	aStack push: 'a'.
 	self assert: aStack size = 1.	
 	aStack push: 'b'.
