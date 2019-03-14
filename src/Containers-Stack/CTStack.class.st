@@ -42,6 +42,12 @@ CTStack >> push: anObject [
 	^ anObject
 ]
 
+{ #category : #query }
+CTStack >> size [
+
+	^ elements size
+]
+
 { #category : #operations }
 CTStack >> top [
 	"Answer the first element of the receiver without removing it."
