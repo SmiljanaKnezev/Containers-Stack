@@ -69,6 +69,46 @@ CTStackTest >> testEmptyError [
 ]
 
 { #category : #tests }
+CTStackTest >> testIfEmpty [
+
+	| aStack |
+	aStack := self stackClass new.
+	self assert: (aStack ifEmpty: [ true ]). 
+	aStack push: 11.
+	self assert: (aStack ifEmpty: [ 1/0 ]) == aStack
+]
+
+{ #category : #tests }
+CTStackTest >> testIfEmptyIfNotEmpty [
+
+	| aStack |
+	aStack := self stackClass new.
+	self assert: (aStack ifEmpty: [ true ] ifNotEmpty: [ 1/0 ]). 
+	aStack push: 11.
+	self assert: (aStack ifEmpty: [ 1/0 ] ifNotEmpty: [ true ])
+]
+
+{ #category : #tests }
+CTStackTest >> testIfNotEmpty [
+
+	| aStack |
+	aStack := self stackClass new.
+	self assert: (aStack ifNotEmpty: [ 1/0 ]) == aStack. 
+	aStack push: 11.
+	self assert: (aStack ifNotEmpty: [ true ])
+]
+
+{ #category : #tests }
+CTStackTest >> testIfNotEmptyIfEmpty [
+
+	| aStack |
+	aStack := self stackClass new.
+	self assert: (aStack ifNotEmpty: [ 1/0 ] ifEmpty: [ true ]). 
+	aStack push: 11.
+	self assert: (aStack  ifNotEmpty: [ true ] ifEmpty: [ 1/0 ]) 
+]
+
+{ #category : #tests }
 CTStackTest >> testIsEmpty [
 
 	| aStack |

@@ -14,6 +14,39 @@ Class {
 	#category : #'Containers-Stack'
 }
 
+{ #category : #testing }
+CTStack >> ifEmpty: aBlock [
+	"Execute the given block, answering its value if the receiver is empty, otherwise answer the receiver."
+	
+	"Note that the fact that this method returns its receiver in case the receiver is not empty allows one to write expressions like the following ones: self classifyMethodAs: (myProtocol ifEmpty: ['As yet unclassified'])"
+
+	^ elements ifEmpty: aBlock ifNotEmpty: [ self ]
+]
+
+{ #category : #testing }
+CTStack >> ifEmpty: aBlockClosure ifNotEmpty: aBlockClosure2 [ 
+	"Evaluate emptyBlock if I'm empty, notEmptyBlock otherwise"
+	"If the notEmptyBlock has an argument, execute with the receiver as its argument"
+	
+	^ elements ifEmpty: aBlockClosure ifNotEmpty: aBlockClosure2
+]
+
+{ #category : #testing }
+CTStack >> ifNotEmpty: aBlock [
+	"Evaluate the given block with the receiver as argument, answering its value
+    unless the receiver is empty, in which case answer the receiver."
+
+	^ elements ifNotEmpty: aBlock ifEmpty: [ self ]
+]
+
+{ #category : #testing }
+CTStack >> ifNotEmpty: aBlockClosure ifEmpty: aBlockClosure2 [ 
+	"Evaluate emptyBlock if I'm empty, notEmptyBlock otherwise
+	 If the notEmptyBlock has an argument, execute with the receiver as its argument"
+	
+	^ elements ifNotEmpty: aBlockClosure ifEmpty: aBlockClosure2
+]
+
 { #category : #initialization }
 CTStack >> initialize [
 
