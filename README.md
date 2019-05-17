@@ -21,6 +21,8 @@ Metacello new
 
 ## If you want to depend on it 
 
+Add the following code to your Metacello baseline or configuration 
+
 ```smalltalk
 spec 
    baseline: 'ContainersStack' 
