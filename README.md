@@ -24,5 +24,5 @@ Metacello new
 ```smalltalk
 spec 
    baseline: 'ContainersStack' 
-   with: [ spec repository: 'github://Ducasse/Containers-Stack' ].
+   with: [ spec repository: 'github://Ducasse/Containers-Stack/src' ].
 ```
