@@ -22,7 +22,8 @@ A dead stupid stack implementation, but one fully working :)
  aStack pop  >>> 'b'.
  aStack size >>> 1.
  aStack pop >>> 'a'.
- aStack size >>> 0. ```
+ aStack size >>> 0. 
+ ```
 
 ## Loading 
 The following script installs Containers-Stack in Pharo.
