@@ -11,7 +11,8 @@ A dead stupid stack implementation, but one fully working :)
 
 ## Example
 
-``` | aStack |
+``` 
+| aStack |
  aStack := CTStack new.
  aStack push: 'a'.
  aStack size >>> 1.
